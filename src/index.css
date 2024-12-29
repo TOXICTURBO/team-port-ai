@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-100;
+    background: linear-gradient(to bottom right, #000000, #1a0000);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-red-600 text-base font-medium rounded-md shadow-sm text-red-600 hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200;
+  }
+
+  .input {
+    @apply block w-full px-4 py-3 border-gray-700 rounded-md shadow-sm bg-black/50 text-white placeholder-gray-400 focus:ring-red-500 focus:border-red-500;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-300 mb-1;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .card {
+    @apply relative bg-gradient-to-br from-black/80 to-black/60 rounded-lg overflow-hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .card:hover::before {
+    @apply opacity-100;
+  }
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px theme('colors.red.600'),
+                0 0 10px theme('colors.red.600'),
+                0 0 15px theme('colors.red.600');
+  }
+  50% {
+    box-shadow: 0 0 10px theme('colors.red.600'),
+                0 0 20px theme('colors.red.600'),
+                0 0 30px theme('colors.red.600');
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+/* Grid Background */
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
